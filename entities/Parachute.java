@@ -4,6 +4,7 @@ public class Parachute extends Entity {
     private boolean isOpen; // открыт ли
     private boolean hooked; // зацепился ли
     private int hookDurability = 100; //прочность крепления
+    private char icon = 'p';
 
     public Parachute(Integer x, Integer y, Entity owner, int mass, boolean isOpen) {
         super(x, y, owner, mass);

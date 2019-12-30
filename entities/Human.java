@@ -6,7 +6,7 @@ public class Human extends Entity implements Mover {
     private Mood mood; // настроение
     private Posture posture; // поза
     private boolean absentMinded; // рассеянный или нет
-
+    private char icon = 'h';
 
     public Human(String name, Integer x, Integer y, Entity owner, int mass, Mood mood, Posture posture, boolean absentMinded) {
         super(x, y, owner, mass);

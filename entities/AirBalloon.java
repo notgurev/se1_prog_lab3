@@ -7,6 +7,7 @@ public class AirBalloon extends Entity {
     public static final int MASS_SPEED_COEFFICIENT = -1;
     public static final int ARCHIMEDES_FORCE = 14;
     public static final int ENV_TEMP = 10;
+    private char icon = 'a';
 
     public AirBalloon(Integer x, Integer y, Entity owner, int mass, int temp, int height) {
         super(x, y, owner, mass);
