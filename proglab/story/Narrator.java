@@ -1,4 +1,6 @@
-import entities.*;
+package proglab.story;
+
+import proglab.entities.*;
 
 public class Narrator {
     public static final char FILLER = '░';
@@ -9,7 +11,7 @@ public class Narrator {
     }
 
     // Строит в консоли карту инвентаря Entity
-    public static void displayMap(Entity entity, int centerX, int centerY, int radius) {
+    public static void displayMap(Entity entity, int radius) {
         // Высчитываем количество ячеек
         /*
         Пример:
@@ -28,11 +30,11 @@ public class Narrator {
         Character[][] map = new Character[dimLength][dimLength];
         // Заполняем символами по объектам
         for (int i = 0; i < entity.getTopIndex(); i++) {
-            // Если есть x-координата, то сохраняем иконку в массив (со сдвигом из-за кастомного центра)
-            if (entity.getInventory()[i].getPosition().getLocalX() != null) {
-                map[entity.getInventory()[i].getPosition().getLocalX()-centerX]
-                        [entity.getInventory()[i].getPosition().getLocalY()-centerY] =
-                        entity.getInventory()[i].getIcon();
+            Integer x = entity.getInventory()[i].getPosition().getLocalX();
+            Integer y = entity.getInventory()[i].getPosition().getLocalY();
+            // Если есть x-координата, то сохраняем иконку в массив
+            if (x != null && x <= radius && y <= radius) {
+                map[x + radius][y + radius] = entity.getInventory()[i].getIcon();
             }
         }
         // Рисуем верхний ряд
@@ -41,16 +43,16 @@ public class Narrator {
             System.out.print('═');
         }
         System.out.println('╗');
-        // Пробегаем по строчкам (Y)
-        for (int y = 0; y < dimLength; y++) {
+        // Пробегаем по (X)
+        for (int x = 0; x < dimLength; x++) {
             // Рисуем стенку и пробел
             System.out.print('║');
             System.out.print(' ');
-            // Пробегам по столбикам (X)
-            for (int x = 0; x < dimLength; x++) {
+            // Пробегам по (Y)
+            for (int y = 0; y < dimLength; y++) {
                 // Рисуем иконку, если что-то есть в ячейке, иначе рисуем филлер
-                if (map[x][y] != null) {
-                    System.out.print(map[x][y]);
+                if (map[y][x] != null) {
+                    System.out.print(map[y][x]);
                 } else {
                     System.out.print(FILLER);
                 }

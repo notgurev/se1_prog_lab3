@@ -1,4 +1,4 @@
-package entities.traits;
+package proglab.entities.traits;
 
 public enum Intelligence {
     IDIOT,
