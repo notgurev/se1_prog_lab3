@@ -7,7 +7,7 @@ public abstract class Entity implements GeneralMethods {
     private final int INVENTORY_SIZE = 20; // размер инвентаря
     private Entity[] inventory; // инвентарь, хранящий Entity
     private int topIndex = -1; // индекс последнего Entity в инвентаре
-    private char icon = 'e'; // иконка по умолчанию
+    private Character icon = 'e'; // иконка по умолчанию
 
     // Конструктор с вводом координат, владельца и массы. Можно ввести null.
     public Entity(Integer x, Integer y, Entity owner, int mass) {
@@ -22,11 +22,11 @@ public abstract class Entity implements GeneralMethods {
         }
     }
 
-    public void setIcon(char icon) {
+    public void setIcon(Character icon) {
         this.icon = icon;
     }
 
-    public char getIcon() {
+    public Character getIcon() {
         return icon;
     }
 
