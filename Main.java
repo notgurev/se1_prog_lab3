@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         AirBalloon balloon = new AirBalloon(0, 0, null, 1000, 110, 3000);
         Human Toropyzhka = new Human("Торопыжка", 1, 1, balloon, 35, Mood.WORRIED, Posture.STANDING, true);
-        Toropyzhka.setIcon('T');
+        Toropyzhka.setIcon('R');
         Human Znayka = new Human("Знайка", 3, 2, balloon, 200, Mood.CALM, Posture.STANDING, false);
         Znayka.setIcon('Z');
         Human Neznayka = new Human("Незнайка", 4, 2, balloon, 32, Mood.PANIC, Posture.LYING, false);
