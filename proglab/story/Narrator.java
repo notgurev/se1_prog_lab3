@@ -11,7 +11,7 @@ public class Narrator {
     }
 
     // Строит в консоли карту инвентаря Entity
-    public static void displayMap(Entity entity, int radius) {
+    public static void displayMap(Entity entity, int radius, int centerX, int centerY) {
         // Высчитываем количество ячеек
         /*
         Пример:
@@ -33,8 +33,8 @@ public class Narrator {
             Integer x = entity.getInventory()[i].getPosition().getLocalX();
             Integer y = entity.getInventory()[i].getPosition().getLocalY();
             // Если есть x-координата, то сохраняем иконку в массив
-            if (x != null && x <= radius && y <= radius) {
-                map[x + radius][y + radius] = entity.getInventory()[i].getIcon();
+            if (x != null && x - centerX <= radius && y - centerY <= radius) {
+                map[x + radius - centerX][y + radius - centerY] = entity.getInventory()[i].getIcon();
             }
         }
         // Рисуем верхний ряд

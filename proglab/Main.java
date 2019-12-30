@@ -27,7 +27,7 @@ public class Main {
         Parachute parachute3 = new Parachute(null, null, Neznayka, 5, false);
 
         // Story
-        Narrator.displayMap(balloon, 3);
+        Narrator.displayMap(balloon, 3, 1,1);
         balloon.changeTemp(-3);
         balloon.coverInFrost();
         for (int i = 0; i <= 2; i++) {
