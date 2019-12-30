@@ -1,6 +1,8 @@
 import entities.*;
 
 public class Narrator {
+    private static final char FILLER = '░';
+
     // Объявление в консоль
     public static void announce(String announcement) {
         System.out.println(announcement);
@@ -18,7 +20,7 @@ public class Narrator {
          */
         int dimLength = 2*radius + 1;
         // Создаем двойной массив-карту символов
-        Character[][] map = new Character[2*radius+1][2*radius+1];
+        Character[][] map = new Character[dimLength][dimLength];
         // Заполняем символами по объектам
         for (int i = 0; i < entity.getTopIndex(); i++) {
             // Если есть x-координата, то сохраняем иконку в массив (со сдвигом из-за кастомного центра)
@@ -30,24 +32,33 @@ public class Narrator {
         }
         // Рисуем верхний ряд
         System.out.print('╔');
-        for (int i = 0; i < dimLength; i++) {
+        for (int i = 0; i < 2*(dimLength)+1; i++) {
             System.out.print('═');
         }
         System.out.println('╗');
         // Пробегаем по строчкам (Y)
-        for (int y = 1; y < dimLength; y++) {
+        for (int y = 0; y < dimLength; y++) {
+            // Рисуем стенку и пробел
+            System.out.print('║');
+            System.out.print(' ');
             // Пробегам по столбикам (X)
             for (int x = 0; x < dimLength; x++) {
-                // рисуем иконку, если что-то есть в ячейке
-                if (map[x][y] != null)
+                // Рисуем иконку, если что-то есть в ячейке, иначе рисуем филлер
+                if (map[x][y] != null) {
+                    System.out.print(map[x][y]);
+                } else {
+                    System.out.print(FILLER);
+                }
+                System.out.print(' ');
             }
+            System.out.println('║');
         }
         // Рисуем нижний ряд
         System.out.print('╚');
-        for (int i = 0; i < dimLength; i++) {
+        for (int i = 0; i < 2*(dimLength)+1; i++) {
             System.out.print('═');
         }
-        System.out.print('╝');
+        System.out.println('╝');
 
     }
 }
