@@ -1,7 +1,7 @@
 import entities.*;
 
 public class Narrator {
-    private static final char FILLER = '░';
+    public static final char FILLER = '░';
 
     // Объявление в консоль
     public static void announce(String announcement) {
