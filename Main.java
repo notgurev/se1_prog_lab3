@@ -9,6 +9,8 @@ public class Main {
         Human Znayka = new Human("Знайка", 3, 2, balloon, 200, Mood.CALM, Posture.STANDING, false);
         Human Neznayka = new Human("Незнайка", 4, 2, balloon, 32, Mood.PANIC, Posture.LYING, false);
         Human UnknownShorty = new Human("неизвестный коротышка", 1, 0, balloon, 40, Mood.CALM, Posture.STANDING, false);
+        Human Vorchun = new Human("Ворчун", 0 , 0, balloon, 35, Mood.WORRIED, Posture.SITTING, false);
+        Human Tubik = new Human("Тюбик", 0,0, balloon, 40, Mood.PANIC, Posture.SITTING, false);
         SandBag sandBag1 = new SandBag(null, null, balloon, 7);
         SandBag sandBag2 = new SandBag(null, null, balloon, 7);
         SandBag sandBag3 = new SandBag(null, null, balloon, 5);
