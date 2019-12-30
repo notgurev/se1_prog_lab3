@@ -1,21 +1,22 @@
 import entities.*;
 import entities.states.*;
+import entities.traits.Intelligence;
 import javafx.geometry.Pos;
 
 public class Main {
     public static void main(String[] args) {
         AirBalloon balloon = new AirBalloon(0, 0, null, 1000, 110, 3000);
-        Human Toropyzhka = new Human("Торопыжка", 1, 1, balloon, 35, Mood.WORRIED, Posture.STANDING, true);
+        Human Toropyzhka = new Human("Торопыжка", 1, 1, balloon, 35, Mood.WORRIED, Posture.STANDING, Intelligence.DUMMY);
         Toropyzhka.setIcon('R');
-        Human Znayka = new Human("Знайка", 3, 2, balloon, 200, Mood.CALM, Posture.STANDING, false);
+        Human Znayka = new Human("Знайка", 3, 2, balloon, 200, Mood.CALM, Posture.STANDING, Intelligence.SMART);
         Znayka.setIcon('Z');
-        Human Neznayka = new Human("Незнайка", 4, 2, balloon, 32, Mood.PANIC, Posture.LYING, false);
+        Human Neznayka = new Human("Незнайка", 4, 2, balloon, 32, Mood.PANIC, Posture.LYING, Intelligence.ORDINARY);
         Neznayka.setIcon('N');
-        Human UnknownShorty = new Human("неизвестный коротышка", 1, 0, balloon, 40, Mood.CALM, Posture.STANDING, false);
+        Human UnknownShorty = new Human("неизвестный коротышка", 1, 0, balloon, 40, Mood.CALM, Posture.STANDING, Intelligence.ORDINARY);
         UnknownShorty.setIcon('U');
-        Human Vorchun = new Human("Ворчун", 0 , 0, balloon, 35, Mood.WORRIED, Posture.SITTING, false);
+        Human Vorchun = new Human("Ворчун", 0 , 0, balloon, 35, Mood.WORRIED, Posture.SITTING, Intelligence.ORDINARY);
         Vorchun.setIcon('V');
-        Human Tubik = new Human("Тюбик", 0,0, balloon, 40, Mood.PANIC, Posture.SITTING, false);
+        Human Tubik = new Human("Тюбик", 0,0, balloon, 40, Mood.PANIC, Posture.SITTING, Intelligence.ORDINARY);
         Tubik.setIcon('T');
         SandBag sandBag1 = new SandBag(null, null, balloon, 7);
         SandBag sandBag2 = new SandBag(null, null, balloon, 7);
@@ -24,6 +25,8 @@ public class Main {
         Parachute parachute2 = new Parachute(null, null, Znayka, 5, false);
         Parachute parachute3 = new Parachute(null, null, Neznayka, 5, false);
 
+        // TESTS
+        System.out.println(Intelligence.GENIUS.ordinal() + " " + Intelligence.DUMMY.ordinal());
         // Story
         Narrator.displayMap(balloon, 0, 0, 3);
         balloon.changeTemp(-3);

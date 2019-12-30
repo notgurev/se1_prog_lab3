@@ -1,19 +1,20 @@
 package entities;
 import entities.states.*;
+import entities.traits.Intelligence;
 
 public class Human extends Entity implements Mover {
     private String name; // имя
     private Mood mood; // настроение
     private Posture posture; // поза
-    private boolean absentMinded; // рассеянный или нет
+    private Intelligence intelligence; // интеллект
     private char icon = 'h';
 
-    public Human(String name, Integer x, Integer y, Entity owner, int mass, Mood mood, Posture posture, boolean absentMinded) {
+    public Human(String name, Integer x, Integer y, Entity owner, int mass, Mood mood, Posture posture, Intelligence intelligence) {
         super(x, y, owner, mass);
         this.name = name;
         this.mood = mood;
         this.posture = posture;
-        this.absentMinded = absentMinded;
+        this.intelligence = intelligence;
     }
 
     public String getName() {
@@ -69,9 +70,9 @@ public class Human extends Entity implements Mover {
         System.out.println(this.toString() + " говорит: \"" + phrase +"\"");
     }
 
-    // Прыгнуть из owner
+    // Прыгнуть из owner c парашютом
     public void jumpOut(Parachute parachute) {
-        if (this.absentMinded) {
+        if (this.intelligence.ordinal() < Intelligence.ORDINARY.ordinal()) {
             parachute.openParachute();
             System.out.println(this.toString() + " открыл " + parachute.toString());
         }

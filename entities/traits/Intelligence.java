@@ -1,9 +1,9 @@
 package entities.traits;
 
 public enum Intelligence {
-    GENIUS,
-    SMART,
-    ORDINARY,
+    IDIOT,
     DUMMY,
-    IDIOT
+    ORDINARY,
+    SMART,
+    GENIUS
 }
