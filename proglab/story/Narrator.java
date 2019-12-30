@@ -15,11 +15,11 @@ public class Narrator {
         // Высчитываем количество ячеек
         /*
         Пример:
-        ╔═══════════════╗
-        ║ T U ░ ░ ░ ░ ░ ║
-        ║ ░ R ░ ░ ░ ░ ░ ║
-        ║ ░ ░ ░ Z N ░ ░ ║
-        ║ ░ ░ ░ ░ ░ ░ ░ ║
+        ╔═══════════════╗ x ->
+        ║ T U ░ ░ ░ ░ ░ ║ y
+        ║ ░ R ░ ░ ░ ░ ░ ║ |
+        ║ ░ ░ ░ Z N ░ ░ ║ |
+        ║ ░ ░ ░ ░ ░ ░ ░ ║ V
         ║ ░ ░ ░ ░ ░ ░ ░ ║
         ║ ░ ░ ░ ░ ░ ░ ░ ║
         ║ ░ ░ ░ ░ ░ ░ ░ ║
@@ -33,7 +33,7 @@ public class Narrator {
             Integer x = entity.getInventory()[i].getPosition().getLocalX();
             Integer y = entity.getInventory()[i].getPosition().getLocalY();
             // Если есть x-координата, то сохраняем иконку в массив
-            if (x != null && x - centerX <= radius && y - centerY <= radius) {
+            if (x != null && Math.abs(x - centerX) <= radius && Math.abs(y - centerY) <= radius) {
                 map[x + radius - centerX][y + radius - centerY] = entity.getInventory()[i].getIcon();
             }
         }
