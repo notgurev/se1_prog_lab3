@@ -122,4 +122,27 @@ public class Human extends Entity implements Mover {
         }
         System.out.println(name + " пытался отцепить " + parachute.toString() + " " + time + " секунд(ы)");
     }
+
+    public void lookAt(Entity entity) {
+        System.out.println(this.toString() + " смотрит на " + entity.toString());
+    }
+
+    public void look(String where) {
+        System.out.println(this.toString() + " смотрит " + where);
+    }
+
+    public void announceMood() {
+        System.out.println(this.toString() + " " + this.mood.getName());
+    }
+
+    class Argument {
+        private Human partner;
+        public void Argument(Human partner) {
+            this.partner = partner;
+        }
+
+        public void start() {
+            System.out.println(this.toString() + " начал спорить с " + partner.toString());
+        }
+    }
 }

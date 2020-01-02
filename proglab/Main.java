@@ -1,23 +1,26 @@
 package proglab;
 
+import javafx.geometry.Pos;
 import proglab.entities.*;
+import proglab.entities.states.Mood;
+import proglab.entities.states.Posture;
 import proglab.entities.traits.*;
 import proglab.story.*;
 
 public class Main {
     public static void main(String[] args) {
         AirBalloon balloon = new AirBalloon(0, 0, null, 1000, 110, 3000);
-        Human Toropyzhka = new Human("Торопыжка", 0, -1, balloon, 35, proglab.entities.states.Mood.WORRIED, proglab.entities.states.Posture.STANDING, Intelligence.DUMMY);
+        Human Toropyzhka = new Human("Торопыжка", 0, -1, balloon, 35, Mood.WORRIED, Posture.STANDING, Intelligence.DUMMY);
         Toropyzhka.setIcon('H');
-        Human Znayka = new Human("Знайка", 1, 0, balloon, 200, proglab.entities.states.Mood.CALM, proglab.entities.states.Posture.STANDING, Intelligence.SMART);
+        Human Znayka = new Human("Знайка", 1, 0, balloon, 200, Mood.CALM, Posture.STANDING, Intelligence.SMART);
         Znayka.setIcon('Z');
-        Human Neznayka = new Human("Незнайка", 2, 0, balloon, 32, proglab.entities.states.Mood.PANIC, proglab.entities.states.Posture.LYING, Intelligence.ORDINARY);
+        Human Neznayka = new Human("Незнайка", 2, 0, balloon, 32, Mood.PANIC, Posture.LYING, Intelligence.ORDINARY);
         Neznayka.setIcon('N');
-        Human UnknownShorty = new Human("неизвестный коротышка", -1, 2, balloon, 40, proglab.entities.states.Mood.CALM, proglab.entities.states.Posture.STANDING, Intelligence.ORDINARY);
+        Human UnknownShorty = new Human("неизвестный коротышка", -1, 2, balloon, 40, Mood.CALM, Posture.STANDING, Intelligence.ORDINARY);
         UnknownShorty.setIcon('U');
-        Human Vorchun = new Human("Ворчун", -2 , 0, balloon, 35, proglab.entities.states.Mood.WORRIED, proglab.entities.states.Posture.SITTING, Intelligence.ORDINARY);
+        Human Vorchun = new Human("Ворчун", -2 , 0, balloon, 35, Mood.PANIC, Posture.SITTING, Intelligence.ORDINARY);
         Vorchun.setIcon('V');
-        Human Tubik = new Human("Тюбик", 2,2, balloon, 40, proglab.entities.states.Mood.PANIC, proglab.entities.states.Posture.SITTING, Intelligence.ORDINARY);
+        Human Tubik = new Human("Тюбик", 2,2, balloon, 40, Mood.PANIC, Posture.SITTING, Intelligence.ORDINARY);
         Tubik.setIcon('T');
         SandBag sandBag1 = new SandBag(null, null, balloon, 7);
         SandBag sandBag2 = new SandBag(null, null, balloon, 7);
@@ -28,6 +31,24 @@ public class Main {
 
         // Story
         Narrator.displayMap(balloon, 2, 0,0);
+        Vorchun.setPosture(Posture.STANDING);
+        Vorchun.say("Ух!");
+        Vorchun.move(1,2);
+        Vorchun.setPosture(Posture.SITTING);
+        Narrator.displayMap(balloon, 2, 0,0);
+        Vorchun.announceMood();
+        Toropyzhka.announceMood();
+        Vorchun.lookAt(Toropyzhka);
+        Vorchun.setPosture(Posture.STANDING);
+        Vorchun.move(-2,0);
+        Vorchun.setPosture(Posture.SITTING);
+        Vorchun.setPosture(Posture.STANDING);
+        Vorchun.move(-2,-2);
+        Vorchun.setPosture(Posture.SITTING);
+        Vorchun.setPosture(Posture.STANDING);
+        Vorchun.move(-2,0);
+        Vorchun.setPosture(Posture.SITTING);
+
         balloon.changeTemp(-3);
         balloon.coverInFrost();
         for (int i = 0; i <= 2; i++) {
@@ -51,9 +72,13 @@ public class Main {
         UnknownShorty.move(-1,-2);
         Neznayka.move(1,-2);
         Narrator.displayMap(balloon, 2, 0,0);
-        Neznayka.moveWithPartner(UnknownShorty, Toropyzhka, 2, 0);
+        Neznayka.moveWithPartner(UnknownShorty, Toropyzhka, 0, -2);
         Narrator.displayMap(balloon, 2, 0,0);
         balloon.moveVertically();
-        Neznayka.say("Нам не удалось подобрать значения констант, чтобы красиво вычислялась скорость, но в целом все работает!");
+        Neznayka.say("Может, надо было просто отрез... Впрочем, неважно...");
+        // 4 лаба
+        Vorchun.look("вниз");
+        Vorchun.say("Почему в тексте не написаны наши фразы?");
+        Vorchun.Argument arg1 = Vorchun.new Vorchun.Argument(Neznayka);
     }
 }
