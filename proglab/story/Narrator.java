@@ -43,16 +43,16 @@ public class Narrator {
             System.out.print('═');
         }
         System.out.println('╗');
-        // Пробегаем по (X)
-        for (int x = 0; x < dimLength; x++) {
+        // Пробегаем по (Y)
+        for (int y = 0; y < dimLength; y++) {
             // Рисуем стенку и пробел
             System.out.print('║');
             System.out.print(' ');
-            // Пробегам по (Y)
-            for (int y = 0; y < dimLength; y++) {
+            // Пробегам по (X)
+            for (int x = 0; x < dimLength; x++) {
                 // Рисуем иконку, если что-то есть в ячейке, иначе рисуем филлер
-                if (map[y][x] != null) {
-                    System.out.print(map[y][x]);
+                if (map[x][y] != null) {
+                    System.out.print(map[x][y]);
                 } else {
                     System.out.print(FILLER);
                 }
