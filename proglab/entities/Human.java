@@ -77,17 +77,12 @@ public class Human extends Entity implements Mover {
             System.out.println(this.toString() + " открыл " + parachute.toString());
         }
         if (!parachute.isOpen()) {
+            System.out.println(name + " выпрыгивает из " + super.getPosition().getOwner().toString());
             // удаляет себя из инвентаря владельца
             super.getPosition().getOwner().deleteItem(this);
-            System.out.println(name + " выпрыгивает из " + super.getPosition().getOwner().toString());
-            // удаляет у себя ссылку на владельца
-            this.setOwner(null);
             // Потом открывает парашют
             parachute.openParachute();
             System.out.println(name + " открывает " + parachute.toString());
-            // Выпрыгивая, получает координаты своего владельца вместо своих
-            this.getPosition().setLocalX(super.getPosition().getLocalX());
-            this.getPosition().setLocalY(super.getPosition().getLocalY());
 
         } else {
             parachute.hook();
