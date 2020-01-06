@@ -97,6 +97,10 @@ public abstract class Entity implements GeneralMethods {
         return position;
     }
 
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     // Сеттеры для локальных координат и владельца в Position
     public void setCoordinates(int newX, int newY) {
         this.position.setLocalX(newX);
