@@ -98,10 +98,10 @@ public class Human extends Entity implements Mover {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        return (name.equals(((Human) obj).name)); // у всех людей должны быть разные имена
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        return (name.equals(((Human) o).name)); // у всех людей должны быть разные имена
     }
 
     @Override

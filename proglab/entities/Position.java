@@ -56,10 +56,10 @@ public class Position implements GeneralMethods {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Position pos = (Position) obj;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position pos = (Position) o;
         return (pos.getLocalX() == x && pos.getLocalY() == y && pos.getOwner().equals(owner));
     }
 
