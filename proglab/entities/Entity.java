@@ -1,5 +1,7 @@
 package proglab.entities;
 
+import proglab.exceptions.NoItemsForRemovalException;
+
 // Существо, имеющее массу, Position и инвентарь
 public abstract class Entity implements GeneralMethods {
     private Position position; // позиция
@@ -55,7 +57,7 @@ public abstract class Entity implements GeneralMethods {
     }
 
     // Удаление конкретного объекта Entity из инвентаря
-    public void deleteItem(Entity entity) {
+    public void deleteItem(Entity entity) throws NoItemsForRemovalException {
         int indexItem = -1;
         for ( int i = 0 ; i <= topIndex; i++){
             if (entity.equals(inventory[i])){
@@ -67,10 +69,12 @@ public abstract class Entity implements GeneralMethods {
             this.inventory[indexItem].setPosition(this.getPosition());
             for (int i = indexItem ; i <= topIndex - 1; i++){ inventory[i] = inventory[i + 1]; }
             topIndex -=1;
+        } else {
+            throw new NoItemsForRemovalException("No Items For Removal");
         }
     }
     // Удаление number первых попавшихся Entity c классом typeName
-    public void deleteItem(String typeName, int number) {
+    public void deleteItem(String typeName, int number) throws NoItemsForRemovalException{
         while (number > 0) {
             int indexItem = -1;
             for (int i = 0; i <= topIndex; i++) {
@@ -84,7 +88,9 @@ public abstract class Entity implements GeneralMethods {
                 for (int i = indexItem; i <= topIndex - 1; i++) { inventory[i] = inventory[i + 1]; }
                 topIndex -= 1;
                 number -= 1;
-            } else { break;}
+            } else {
+                throw new NoItemsForRemovalException("No Items For Removal");
+            }
         }
     }
 

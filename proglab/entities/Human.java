@@ -1,6 +1,7 @@
 package proglab.entities;
 import proglab.entities.states.*;
 import proglab.entities.traits.Intelligence;
+import proglab.exceptions.NoItemsForRemovalException;
 
 public class Human extends Entity implements Mover {
     private String name; // имя
@@ -58,42 +59,45 @@ public class Human extends Entity implements Mover {
 
     // Удаляет вещь из инвентаря (не обязательно своего) по названию
     public void removeItemFromEntity(Entity owner, String itemName, int numberOfItems) {
-        owner.deleteItem(itemName, numberOfItems);
-        System.out.println(this.toString() + " удалил " + numberOfItems + " " + itemName + " из инвентаря " + owner.toString());
+        try {
+            owner.deleteItem(itemName, numberOfItems);
+            System.out.println(this.toString() + " удалил " + numberOfItems + " " + itemName + " из инвентаря " + owner.toString());
+        } catch (NoItemsForRemovalException e){System.out.println(e.getMessage());};
     }
     public void removeItemFromEntity(Entity owner, Entity item) {
-        owner.deleteItem(item);
-        System.out.println(this.toString() + " удалил " + item.toString() + " из инвентаря " + owner.toString());
+        try {
+            owner.deleteItem(item);
+            System.out.println(this.toString() + " удалил " + item.toString() + " из инвентаря " + owner.toString());
+        } catch (NoItemsForRemovalException e){System.out.println(e.getMessage());};
     }
     // Что-то сказать
     public void say(String phrase) {
         System.out.println(this.toString() + " говорит: \"" + phrase +"\"");
     }
-
     // Прыгнуть из owner c парашютом
     public void jumpOut(Parachute parachute) {
-        // Если человек глупый, то он сначала открывает парашют
-        if (this.intelligence.ordinal() < Intelligence.ORDINARY.ordinal()) {
-            parachute.openParachute();
-            System.out.println(this.toString() + " открыл " + parachute.toString());
-        }
-        // Если парашют не открыт, то он нормально выпрыгивает
-        if (!parachute.isOpen()) {
-            System.out.println(name + " выпрыгивает из " + this.getPosition().getOwner().toString());
-            // удаляет себя из инвентаря владельца
-            this.getPosition().getOwner().deleteItem(this);
-            // Потом открывает парашют
-            parachute.openParachute();
-            System.out.println(name + " открывает " + parachute.toString());
-        } else {
-            // Если открыт, то зацепляется
-            parachute.hook();
-            posture = Posture.HANGING_UPSIDE_DOWN;
-            System.out.println(this.toString() + " запутался и теперь " + posture.getName());
-        }
-
+        try {
+            // Если человек глупый, то он сначала открывает парашют
+            if (this.intelligence.ordinal() < Intelligence.ORDINARY.ordinal()) {
+                parachute.openParachute();
+                System.out.println(this.toString() + " открыл " + parachute.toString());
+            }
+            // Если парашют не открыт, то он нормально выпрыгивает
+            if (!parachute.isOpen()) {
+                System.out.println(name + " выпрыгивает из " + this.getPosition().getOwner().toString());
+                // удаляет себя из инвентаря владельца
+                this.getPosition().getOwner().deleteItem(this);
+                // Потом открывает парашют
+                parachute.openParachute();
+                System.out.println(name + " открывает " + parachute.toString());
+            } else {
+                // Если открыт, то зацепляется
+                parachute.hook();
+                posture = Posture.HANGING_UPSIDE_DOWN;
+                System.out.println(this.toString() + " запутался и теперь " + posture.getName());
+            }
+        } catch (NoItemsForRemovalException e){System.out.println(name + " не находитмя в " + this.getPosition().getOwner().toString());};
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

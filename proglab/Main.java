@@ -65,6 +65,7 @@ public class Main {
         Znayka.move(2, 0);
         Narrator.displayMap(balloon, 2, 0,0);
         Znayka.jumpOut(parachute1);
+        Znayka.jumpOut(parachute1);
         Narrator.displayMap(balloon, 2, 0,0);
         Toropyzhka.move(0,-2);
         Narrator.displayMap(balloon, 2, 0,0);
