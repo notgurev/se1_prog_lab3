@@ -143,7 +143,15 @@ public class Human extends Entity implements Mover {
             System.out.println(name + " начал спорить с " + partner.toString());
         }
 
+        public void stop() {
+            System.out.println(name + "закончил спорить с " + partner.toString());
+        }
+
         public void tryToStop() {
+            /*
+                Надо пробежаться по инвентарю
+                Если найдется с нужным умом, то break + остановить спор
+            */
         }
     }
 }
