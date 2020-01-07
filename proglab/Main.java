@@ -81,6 +81,7 @@ public class Main {
         // 4 лаба
         Vorchun.look("вниз");
         Vorchun.say("Почему в тексте не написаны наши фразы?");
-       // Vorchun.Argument arg1 = Vorchun.new Vorchun.Argument(Neznayka);
+        Human.Argument argument = Vorchun.new Argument(Neznayka);
+        argument.start();
     }
 }
