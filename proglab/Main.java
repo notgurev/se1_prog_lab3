@@ -92,5 +92,8 @@ public class Main {
         timeOfTheDay.announceTime();
         windIntensity = WindIntensity.STRONG;
         windIntensity.announceWindIntensity();
+        balloon.changeTemp(-10);
+        balloon.moveVertically();
+        argument.announceStatus();
     }
 }

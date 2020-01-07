@@ -143,25 +143,40 @@ public class Human extends Entity implements Mover {
 
      public class Argument {
         private Human partner;
+        private boolean ongoing;
 
         public Argument(Human partner) {
             this.partner = partner;
         }
 
         public void start() {
+            ongoing = true;
             System.out.println(name + " начал спорить с " + partner.toString());
         }
 
         public void stop() {
+            ongoing = false;
             System.out.println(name + "закончил спорить с " + partner.toString());
         }
 
         public void tryToStop(Human human) {
-            if (getPosition().getOwner().getItemIndex(human) != null) {
-                stop();
+            if (ongoing == true) {
+                if (getPosition().getOwner().getItemIndex(human) != null) {
+                    stop();
+                } else {
+                    System.out.println("Спор между " + name + " и " + partner.toString() +
+                            " продолжается, потому что некому их остановить, ибо " + human.toString() + " отсутствует");
+                }
             } else {
-                System.out.println("Спор между " + name + " и " + partner.toString() +
-                        " продолжается, потому что некому их остановить, ибо " + human.toString() + " отсутствует");
+                System.out.println("Спор уже окончен!");
+            }
+        }
+
+        public void announceStatus() {
+            if (ongoing) {
+                System.out.println("Спор между " + name + " и " + partner.toString() + " продолжается");
+            } else {
+                System.out.println("Спор между " + name + " и " + partner.toString() + " уже окончен");
             }
         }
     }
