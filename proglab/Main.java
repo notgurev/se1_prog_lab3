@@ -1,6 +1,5 @@
 package proglab;
 
-import javafx.geometry.Pos;
 import proglab.entities.*;
 import proglab.entities.states.Mood;
 import proglab.entities.states.Posture;

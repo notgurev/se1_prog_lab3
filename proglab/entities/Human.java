@@ -72,10 +72,12 @@ public class Human extends Entity implements Mover {
 
     // Прыгнуть из owner c парашютом
     public void jumpOut(Parachute parachute) {
+        // Если человек глупый, то он сначала открывает парашют
         if (this.intelligence.ordinal() < Intelligence.ORDINARY.ordinal()) {
             parachute.openParachute();
             System.out.println(this.toString() + " открыл " + parachute.toString());
         }
+        // Если парашют не открыт, то он нормально выпрыгивает
         if (!parachute.isOpen()) {
             System.out.println(name + " выпрыгивает из " + super.getPosition().getOwner().toString());
             // удаляет себя из инвентаря владельца
@@ -83,8 +85,8 @@ public class Human extends Entity implements Mover {
             // Потом открывает парашют
             parachute.openParachute();
             System.out.println(name + " открывает " + parachute.toString());
-
         } else {
+            // Если открыт, то зацепляется
             parachute.hook();
             posture = Posture.HANGING_UPSIDE_DOWN;
             System.out.println(this.toString() + " запутался и теперь " + posture.getName());
