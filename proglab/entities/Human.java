@@ -156,7 +156,13 @@ public class Human extends Entity implements Mover {
             System.out.println(name + "закончил спорить с " + partner.toString());
         }
 
-        public void tryToStop() {
+        public void tryToStop(Human human) {
+            if (getPosition().getOwner().getItemIndex(human) != null) {
+                stop();
+            } else {
+                System.out.println("Спор между " + name + " и " + partner.toString() +
+                        " продолжается, потому что некому их остановить, ибо " + human.toString() + " отсутствует");
+            }
             /*
                 Надо пробежаться по инвентарю
                 Если найдется с нужным умом, то break + остановить спор

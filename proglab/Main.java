@@ -83,5 +83,6 @@ public class Main {
         Vorchun.say("Почему в тексте не написаны наши фразы?");
         Human.Argument argument = Vorchun.new Argument(Neznayka);
         argument.start();
+        argument.tryToStop(Znayka);
     }
 }

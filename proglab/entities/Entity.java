@@ -135,4 +135,13 @@ public abstract class Entity implements GeneralMethods {
     public String toString() {
         return this.getClass().getSimpleName();
     }
+
+    public Integer getItemIndex(Entity entity) {
+        for ( int i = 0 ; i <= topIndex; i++){
+            if (entity.equals(inventory[i])){
+                return i;
+            }
+        }
+        return null;
+    }
 }
