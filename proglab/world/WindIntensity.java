@@ -12,7 +12,7 @@ public enum WindIntensity {
         this.windIntensityAnnouncement = windIntensityAnnouncement;
     }
 
-    public String announceWindIntensity() {
-        return windIntensityAnnouncement;
+    public void announceWindIntensity() {
+        System.out.println(windIntensityAnnouncement);
     }
 }

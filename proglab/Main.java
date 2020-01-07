@@ -30,8 +30,12 @@ public class Main {
         Parachute parachute1 = new Parachute(null, null, Toropyzhka, 5, false);
         Parachute parachute2 = new Parachute(null, null, Znayka, 5, false);
         Parachute parachute3 = new Parachute(null, null, Neznayka, 5, false);
+        timeOfTheDay = TimeOfTheDay.AFTERNOON;
+        windIntensity = WindIntensity.MILD;
 
         // Story
+        timeOfTheDay.announceTime();
+        windIntensity.announceWindIntensity();
         Narrator.displayMap(balloon, 2, 0,0);
         Vorchun.setPosture(Posture.STANDING);
         Vorchun.say("Ух!");
@@ -84,5 +88,9 @@ public class Main {
         Human.Argument argument = Vorchun.new Argument(Neznayka);
         argument.start();
         argument.tryToStop(Znayka);
+        timeOfTheDay = TimeOfTheDay.EVENING;
+        timeOfTheDay.announceTime();
+        windIntensity = WindIntensity.STRONG;
+        windIntensity.announceWindIntensity();
     }
 }

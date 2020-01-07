@@ -2,7 +2,7 @@ package proglab.world;
 
 public enum TimeOfTheDay {
     MORNING("Солнце поднимается с Востока"),
-    AFTERNOON("Солнце ровно над головой"),
+    AFTERNOON("Солнце стоит в зените"),
     EVENING("Солнце клонится к закату"),
     NIGHT("Тьма тьмущая");
 
@@ -11,7 +11,7 @@ public enum TimeOfTheDay {
         this.timeAnnouncement = timeAnnouncement;
     }
 
-    public String announceTime() {
-        return timeAnnouncement;
+    public void announceTime() {
+        System.out.println(timeAnnouncement);
     }
 }
