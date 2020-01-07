@@ -134,12 +134,16 @@ public class Human extends Entity implements Mover {
 
      public class Argument {
         private Human partner;
+
         public Argument(Human partner) {
             this.partner = partner;
         }
 
         public void start() {
             System.out.println(name + " начал спорить с " + partner.toString());
+        }
+
+        public void tryToStop() {
         }
     }
 }
