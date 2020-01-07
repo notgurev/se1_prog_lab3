@@ -7,9 +7,9 @@ public class Narrator {
         int dimLength = 2*radius + 1; // считаем длину стороны
 
         class Map {
-            public static final char FILLER = '░';
+            private static final char FILLER = '░';
 
-            Character[][] map = new Character[dimLength][dimLength]; // Создаем двойной массив-карту символов
+            private Character[][] map = new Character[dimLength][dimLength]; // Создаем двойной массив-карту символов
 
             private void fillMap() {
                 // Заполним весь массив филлером
