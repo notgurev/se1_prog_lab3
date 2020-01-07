@@ -3,12 +3,31 @@ package proglab.entities;
 public class Parachute extends Entity {
     private boolean isOpen; // открыт ли
     private boolean hooked; // зацепился ли
-    private int hookDurability = 100; //прочность крепления
+    //private int hookDurability = 100; //прочность крепления
     private char icon = 'p';
+    private Binding binding;
+
+    // нестатический вложенный класс
+    class Binding {
+        private int durability = 100;
+
+        public int getDurability() {
+            return durability;
+        }
+
+        public void changeDurability(int durabilityChange) {
+            this.durability += durabilityChange;
+        }
+    }
 
     public Parachute(Integer x, Integer y, Entity owner, int mass, boolean isOpen) {
         super(x, y, owner, mass);
         this.isOpen = isOpen;
+        binding = new Binding();
+    }
+
+    public Binding getBinding() {
+        return binding;
     }
 
     public boolean isOpen() {
@@ -30,13 +49,5 @@ public class Parachute extends Entity {
 
     public void unHook() {
         this.hooked = false;
-    }
-
-    public int getHookDurability() {
-        return hookDurability;
-    }
-
-    public void changeHookDurability(int hookDurabilityChange) {
-        this.hookDurability += hookDurabilityChange;
     }
 }

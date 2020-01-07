@@ -5,11 +5,6 @@ import proglab.entities.*;
 public class Narrator {
     public static final char FILLER = '░';
 
-    // Объявление в консоль
-    public static void announce(String announcement) {
-        System.out.println(announcement);
-    }
-
     // Строит в консоли карту инвентаря Entity
     public static void displayMap(Entity entity, int radius, int centerX, int centerY) {
         // Высчитываем количество ячеек

@@ -118,8 +118,8 @@ public class Human extends Entity implements Mover {
     // Попробовать отцепить парашют
     public void tryToUnhook(int time, Parachute parachute) {
         for (int i = 0; i < time; i++) {
-            if (parachute.getHookDurability() > 0) {
-                parachute.changeHookDurability(- (int) Math.round(Math.random())*5);
+            if (parachute.getBinding().getDurability() > 0) {
+                parachute.getBinding().changeDurability(- (int) Math.round(Math.random())*5);
             } else {
                 parachute.unHook();
                 System.out.println(name + " отцепил " + parachute.toString());
@@ -141,7 +141,7 @@ public class Human extends Entity implements Mover {
         System.out.println(this.toString() + " " + this.mood.getName());
     }
 
-     public class Argument {
+    public class Argument {
         private Human partner;
         private boolean ongoing;
 
@@ -160,7 +160,7 @@ public class Human extends Entity implements Mover {
         }
 
         public void tryToStop(Human human) {
-            if (ongoing == true) {
+            if (ongoing) {
                 if (getPosition().getOwner().getItemIndex(human) != null) {
                     stop();
                 } else {
