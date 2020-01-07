@@ -70,7 +70,7 @@ public abstract class Entity implements GeneralMethods {
             for (int i = indexItem ; i <= topIndex - 1; i++){ inventory[i] = inventory[i + 1]; }
             topIndex -=1;
         } else {
-            throw new NoItemsForRemovalException("No Items For Removal");
+            throw new NoItemsForRemovalException("Нечего удалять!");
         }
     }
     // Удаление number первых попавшихся Entity c классом typeName
@@ -89,7 +89,7 @@ public abstract class Entity implements GeneralMethods {
                 topIndex -= 1;
                 number -= 1;
             } else {
-                throw new NoItemsForRemovalException("No Items For Removal");
+                throw new NoItemsForRemovalException("Нечего удалять!");
             }
         }
     }

@@ -53,7 +53,7 @@ public class Main {
 
         balloon.changeTemp(-3);
         balloon.coverInFrost();
-        for (int i = 0; i <= 2; i++) {
+        for (int i = 0; i <= 3; i++) {
             balloon.changeTemp(-10);
             balloon.moveVertically();
             Znayka.removeItemFromEntity(balloon, "SandBag", 1);
@@ -64,7 +64,6 @@ public class Main {
         Neznayka.setMood(proglab.entities.states.Mood.WORRIED);
         Znayka.move(2, 0);
         Narrator.displayMap(balloon, 2, 0,0);
-        Znayka.jumpOut(parachute1);
         Znayka.jumpOut(parachute1);
         Narrator.displayMap(balloon, 2, 0,0);
         Toropyzhka.move(0,-2);

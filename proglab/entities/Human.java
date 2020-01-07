@@ -62,7 +62,9 @@ public class Human extends Entity implements Mover {
         try {
             owner.deleteItem(itemName, numberOfItems);
             System.out.println(this.toString() + " удалил " + numberOfItems + " " + itemName + " из инвентаря " + owner.toString());
-        } catch (NoItemsForRemovalException e){System.out.println(e.getMessage());};
+        } catch (NoItemsForRemovalException e) {
+            System.out.println(e.getMessage());
+        }
     }
     public void removeItemFromEntity(Entity owner, Entity item) {
         try {
@@ -77,6 +79,7 @@ public class Human extends Entity implements Mover {
     // Прыгнуть из owner c парашютом
     public void jumpOut(Parachute parachute) {
         try {
+            if (this.getPosition().getOwner() == null) throw new NoItemsForRemovalException("Нет владельца!");
             // Если человек глупый, то он сначала открывает парашют
             if (this.intelligence.ordinal() < Intelligence.ORDINARY.ordinal()) {
                 parachute.openParachute();
@@ -96,7 +99,9 @@ public class Human extends Entity implements Mover {
                 posture = Posture.HANGING_UPSIDE_DOWN;
                 System.out.println(this.toString() + " запутался и теперь " + posture.getName());
             }
-        } catch (NoItemsForRemovalException e){System.out.println(name + " не находитмя в " + this.getPosition().getOwner().toString());};
+        } catch (NoItemsForRemovalException e) {
+            System.out.println(e.getMessage());
+        }
     }
     @Override
     public boolean equals(Object o) {

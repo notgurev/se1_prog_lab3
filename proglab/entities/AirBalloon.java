@@ -4,9 +4,9 @@ public class AirBalloon extends Entity {
     private boolean isCoveredInFrost = false; // покрыт ли наледью
     private int temp, height; // температура, высота
     // Коэффициенты для вычисления скорости, значения случайные
-    public static final int MASS_SPEED_COEFFICIENT = -1;
-    public static final int ARCHIMEDES_FORCE = 14;
-    public static final int ENV_TEMP = 10;
+    private static final int MASS_SPEED_COEFFICIENT = -1;
+    private static final int ARCHIMEDES_FORCE = 14;
+    private static final int ENV_TEMP = 10;
     private char icon = 'a';
 
     public AirBalloon(Integer x, Integer y, Entity owner, int mass, int temp, int height) {
