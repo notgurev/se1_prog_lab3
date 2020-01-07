@@ -141,31 +141,33 @@ public class Human extends Entity implements Mover {
         System.out.println(this.toString() + " " + this.mood.getName());
     }
 
-    public class Argument {
-        private Human partner;
+    public static class Argument {
+        private Human partner1;
+        private Human partner2;
         private boolean ongoing;
 
-        public Argument(Human partner) {
-            this.partner = partner;
+        public Argument(Human partner1, Human partner2) {
+            this.partner1 = partner1;
+            this.partner2 = partner2;
         }
 
         public void start() {
             ongoing = true;
-            System.out.println(name + " начал спорить с " + partner.toString());
+            System.out.println(partner1.toString() + " начал спорить с " + partner2.toString());
         }
 
         public void stop() {
             ongoing = false;
-            System.out.println(name + "закончил спорить с " + partner.toString());
+            System.out.println(partner1.toString() + "закончил спорить с " + partner2.toString());
         }
 
-        public void tryToStop(Human human) {
+        public void tryToStop(Human stopper) {
             if (ongoing) {
-                if (getPosition().getOwner().getItemIndex(human) != null) {
+                if (partner1.getPosition().getOwner().getItemIndex(stopper) != null) {
                     stop();
                 } else {
-                    System.out.println("Спор между " + name + " и " + partner.toString() +
-                            " продолжается, потому что некому их остановить, ибо " + human.toString() + " отсутствует");
+                    System.out.println("Спор между " + partner1.toString() + " и " + partner2.toString() +
+                            " продолжается, потому что некому их остановить, ибо " + stopper.toString() + " отсутствует");
                 }
             } else {
                 System.out.println("Спор уже окончен!");
@@ -174,9 +176,9 @@ public class Human extends Entity implements Mover {
 
         public void announceStatus() {
             if (ongoing) {
-                System.out.println("Спор между " + name + " и " + partner.toString() + " продолжается");
+                System.out.println("Спор между " + partner1.toString() + " и " + partner2.toString() + " продолжается");
             } else {
-                System.out.println("Спор между " + name + " и " + partner.toString() + " уже окончен");
+                System.out.println("Спор между " + partner1.toString() + " и " + partner2.toString() + " уже окончен");
             }
         }
     }

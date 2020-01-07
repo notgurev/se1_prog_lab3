@@ -85,7 +85,7 @@ public class Main {
         // 4 лаба
         Vorchun.look("вниз");
         Vorchun.say("Почему в тексте не написаны наши фразы?");
-        Human.Argument argument = Vorchun.new Argument(Neznayka);
+        Human.Argument argument = new Human.Argument(Vorchun, Neznayka);
         argument.start();
         argument.tryToStop(Znayka);
         timeOfTheDay = TimeOfTheDay.EVENING;

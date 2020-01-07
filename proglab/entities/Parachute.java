@@ -3,9 +3,8 @@ package proglab.entities;
 public class Parachute extends Entity {
     private boolean isOpen; // открыт ли
     private boolean hooked; // зацепился ли
-    //private int hookDurability = 100; //прочность крепления
-    private char icon = 'p';
-    private Binding binding;
+    private char icon = 'p'; // иконка
+    private Binding binding; // крепление
 
     // нестатический вложенный класс
     class Binding {
