@@ -3,35 +3,36 @@ package proglab.story;
 import proglab.entities.*;
 
 public class Narrator {
-    public static final char FILLER = '░';
-
-    // Строит в консоли карту инвентаря Entity
     public static void displayMap(Entity entity, int radius, int centerX, int centerY) {
-        // Высчитываем количество ячеек
-        /*
-        Пример:
-        ╔═══════════════╗ x ->
-        ║ T U ░ ░ ░ ░ ░ ║ y
-        ║ ░ R ░ ░ ░ ░ ░ ║ |
-        ║ ░ ░ ░ Z N ░ ░ ║ |
-        ║ ░ ░ ░ ░ ░ ░ ░ ║ V
-        ║ ░ ░ ░ ░ ░ ░ ░ ║
-        ║ ░ ░ ░ ░ ░ ░ ░ ║
-        ║ ░ ░ ░ ░ ░ ░ ░ ║
-        ╚═══════════════╝
-         */
-        int dimLength = 2*radius + 1;
-        // Создаем двойной массив-карту символов
-        Character[][] map = new Character[dimLength][dimLength];
-        // Заполняем символами по объектам
-        for (int i = 0; i < entity.getTopIndex(); i++) {
-            Integer x = entity.getInventory()[i].getPosition().getLocalX();
-            Integer y = entity.getInventory()[i].getPosition().getLocalY();
-            // Если есть x-координата, то сохраняем иконку в массив
-            if (x != null && Math.abs(x - centerX) <= radius && Math.abs(y - centerY) <= radius) {
-                map[x + radius - centerX][y + radius - centerY] = entity.getInventory()[i].getIcon();
+        int dimLength = 2*radius + 1; // считаем длину стороны
+
+        class Map {
+            public static final char FILLER = '░';
+
+            Character[][] map = new Character[dimLength][dimLength]; // Создаем двойной массив-карту символов
+
+            private void fillMap() {
+                // Заполним весь массив филлером
+                for (int y = 0; y < dimLength; y++) {
+                    for (int x = 0; x < dimLength; x++) {
+                        map[x][y] = FILLER;
+                    }
+                }
+                // Заполняем символами по объектам
+                for (int i = 0; i < entity.getTopIndex(); i++) {
+                    Integer x = entity.getInventory()[i].getPosition().getLocalX();
+                    Integer y = entity.getInventory()[i].getPosition().getLocalY();
+                    // Если есть x-координата, то сохраняем иконку в массив
+                    if (x != null && Math.abs(x - centerX) <= radius && Math.abs(y - centerY) <= radius) {
+                        map[x + radius - centerX][y + radius - centerY] = entity.getInventory()[i].getIcon();
+                    }
+                }
             }
         }
+
+        Map map = new Map();
+        map.fillMap();
+
         // Рисуем верхний ряд
         System.out.print('╔');
         for (int i = 0; i < 2*(dimLength)+1; i++) {
@@ -46,10 +47,8 @@ public class Narrator {
             // Пробегам по (X)
             for (int x = 0; x < dimLength; x++) {
                 // Рисуем иконку, если что-то есть в ячейке, иначе рисуем филлер
-                if (map[x][y] != null) {
-                    System.out.print(map[x][y]);
-                } else {
-                    System.out.print(FILLER);
+                if (map.map[x][y] != null) {
+                    System.out.print(map.map[x][y]);
                 }
                 System.out.print(' ');
             }
@@ -61,6 +60,5 @@ public class Narrator {
             System.out.print('═');
         }
         System.out.println('╝');
-
     }
 }
