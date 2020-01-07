@@ -1,12 +1,15 @@
 package proglab;
 
 import proglab.entities.*;
-import proglab.entities.states.Mood;
-import proglab.entities.states.Posture;
+import proglab.entities.states.*;
 import proglab.entities.traits.*;
 import proglab.story.*;
+import proglab.world.*;
 
 public class Main {
+    private static TimeOfTheDay timeOfTheDay;
+    private static WindIntensity windIntensity;
+
     public static void main(String[] args) {
         AirBalloon balloon = new AirBalloon(0, 0, null, 1000, 110, 3000);
         Human Toropyzhka = new Human("Торопыжка", 0, -1, balloon, 35, Mood.WORRIED, Posture.STANDING, Intelligence.DUMMY);
