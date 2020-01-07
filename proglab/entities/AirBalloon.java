@@ -1,5 +1,7 @@
 package proglab.entities;
 
+import proglab.exceptions.FasterThanLightException;
+
 public class AirBalloon extends Entity {
     private boolean isCoveredInFrost = false; // покрыт ли наледью
     private int temp, height; // температура, высота
@@ -7,6 +9,7 @@ public class AirBalloon extends Entity {
     private static final int MASS_SPEED_COEFFICIENT = -1;
     private static final int ARCHIMEDES_FORCE = 14;
     private static final int ENV_TEMP = 10;
+    private static final int LIGHT_SPEED = 300000000;
     private char icon = 'a';
 
     public AirBalloon(Integer x, Integer y, Entity owner, int mass, int temp, int height) {
@@ -23,6 +26,8 @@ public class AirBalloon extends Entity {
 
     // Вычисление вертикальной скорости
     public int calculateVerticalSpeed() {
+        if (Math.abs(getTotalMass() * MASS_SPEED_COEFFICIENT + (temp - ENV_TEMP) * ARCHIMEDES_FORCE) > LIGHT_SPEED)
+            throw new FasterThanLightException("Превышена скрость света, пространсто и временной континиум разорваны!");
         return getTotalMass() * MASS_SPEED_COEFFICIENT + (temp - ENV_TEMP) * ARCHIMEDES_FORCE;
     }
 
