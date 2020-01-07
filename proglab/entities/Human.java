@@ -79,9 +79,9 @@ public class Human extends Entity implements Mover {
         }
         // Если парашют не открыт, то он нормально выпрыгивает
         if (!parachute.isOpen()) {
-            System.out.println(name + " выпрыгивает из " + super.getPosition().getOwner().toString());
+            System.out.println(name + " выпрыгивает из " + this.getPosition().getOwner().toString());
             // удаляет себя из инвентаря владельца
-            super.getPosition().getOwner().deleteItem(this);
+            this.getPosition().getOwner().deleteItem(this);
             // Потом открывает парашют
             parachute.openParachute();
             System.out.println(name + " открывает " + parachute.toString());
