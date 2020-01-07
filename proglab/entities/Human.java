@@ -110,7 +110,7 @@ public class Human extends Entity implements Mover {
     public void tryToUnhook(int time, Parachute parachute) {
         for (int i = 0; i < time; i++) {
             if (parachute.getHookDurability() > 0) {
-                parachute.changeHookDurability(- (int) Math.random()*5);
+                parachute.changeHookDurability(- (int) Math.round(Math.random())*5);
             } else {
                 parachute.unHook();
                 System.out.println(name + " отцепил " + parachute.toString());
