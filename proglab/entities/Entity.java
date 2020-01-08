@@ -85,7 +85,7 @@ public abstract class Entity implements GeneralMethods {
             }
             if (indexItem != -1) {
                 this.inventory[indexItem].setPosition(this.getPosition());
-                for (int i = indexItem; i <= topIndex - 1; i++) { inventory[i] = inventory[i + 1]; }
+                for (int i = indexItem; i < topIndex; i++) { inventory[i] = inventory[i + 1]; }
                 topIndex -= 1;
                 number -= 1;
             } else {
