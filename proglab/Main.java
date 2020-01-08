@@ -60,7 +60,7 @@ public class Main {
         for (int i = 0; i <= 3; i++) {
             balloon.changeTemp(-10);
             balloon.moveVertically();
-            //Znayka.removeItemFromEntity(balloon, "SandBag", 1);
+            Znayka.removeItemFromEntity(balloon, "SandBag", 1);
         }
         Znayka.move(Neznayka, 1, 1);
         Narrator.displayMap(balloon, 2, 0,0);
