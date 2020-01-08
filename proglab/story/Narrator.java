@@ -19,7 +19,7 @@ public class Narrator {
                     }
                 }
                 // Заполняем символами по объектам
-                for (int i = 0; i < entity.getTopIndex(); i++) {
+                for (int i = 0; i <= entity.getTopIndex(); i++) {
                     Integer x = entity.getInventory()[i].getPosition().getLocalX();
                     Integer y = entity.getInventory()[i].getPosition().getLocalY();
                     // Если есть x-координата, то сохраняем иконку в массив
